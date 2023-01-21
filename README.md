@@ -51,17 +51,17 @@ Jika seluruh service berjalan dengan baik, maka kita akan mendapati halaman berl
 
 Jika kita `refresh` halaman tersebut, maka kita akan mendapatkan halaman yang berbeda, yaitu halaman bertuliskan`Server B`. Hal ini terjadi karena aplikasi yang diakses melalui NGINX dan HAProxy akan memilih backend service secara bergantian.
 
-Sekaranng kita akan melakukan simulasi healthcheck. Pertama-tama, kita akan mematikan salah satu backend service. Untuk mematikan salah satu backend service, jalankan perintah berikut (misal: `serverb`):
+Sekaranng kita akan melakukan simulasi healthcheck. Pertama-tama, kita akan mematikan salah satu backend service (misal: `serverb`) dengan menjalankan perintah berikut :
 
 ```bash
 sudo docker-compose stop serverb
 ```
 
-Setelah backend service dimatikan, tunggu sekitar 10 detik dan coba akses kembali aplikasi yang tersedia melalui masing-masing load balancer. Lihat apa yang terjadi:
+Setelah backend service dimatikan, tunggu sekitar 10 detik dan coba akses kembali aplikasi yang tersedia melalui masing-masing load balancer dan lihat apa yang terjadi:
 
 ### Perilaku Passive Healthcheck pada NGINX
 
-Setelah dikunjungi kembali, dapat terlihat bahwa browser menunggu beberapa saat hingga akhirnya menampilkan halaman `Server A`. Jika kita `refesh`, maka kita akan mendapatkan halaman yang sama, dengan perilaku yang sama pula (menunggu beberapa saat, hingga akhirnya menampilkan halaman `Server A`).
+Setelah dikunjungi kembali, dapat terlihat bahwa browser menunggu beberapa saat hingga akhirnya menampilkan halaman `Server A`. Jika kita `refesh`, maka kita akan mendapatkan halaman yang sama, dengan perilaku yang sama pula (menunggu beberapa saat).
 
 Jika kita `refersh` terus menerus, kita masih akan mendapatkan halaman yang sama dengan perilaku yang (mungkin) masih sama (yaitu menunggu beberapa saat), hingga akhirnya halaman tersebut muncul tanpa perlu ada fase menunggu lagi. Ini artinya NGINX sudah menghapus backend service yang mati dari daftar backend service yang tersedia.
 
