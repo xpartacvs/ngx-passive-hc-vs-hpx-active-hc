@@ -1,0 +1,38 @@
+version: '3'
+services:
+  serverb:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/server-b.html:/usr/share/nginx/html/index.html
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/index.html"]
+      interval: 1s
+      timeout: 1s
+      retries: 3
+  servera:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/server-a.html:/usr/share/nginx/html/index.html
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/index.html"]
+      interval: 1s
+      timeout: 1s
+      retries: 3
+  ngx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8181:80"
+    depends_on:
+      - servera
+      - serverb
+  hpx:
+    build: ./haproxy
+    ports:
+      - "8282:80"
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - servera
+      - serverb
