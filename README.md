@@ -28,9 +28,7 @@ Pada mode `aktif`, load balancer akan memeriksa status halth backend service sec
 
 ## Mode Healthcheck pada NGINX dan HAProxy
 
-Kenapa menggunakan mode pasif pada NGINX sedangkan mode aktif diterapkan pada HAProxy?
-
-Jawabannya adalah karena mode aktif pada NGINX tidak tersedia pada versi open source. Mode aktif hanya tersedia pada versi pro. Jadi, jika ingin menggunakan mode aktif pada NGINX, maka harus membeli lisensi pro.
+Kenapa menggunakan mode pasif pada NGINX sedangkan mode aktif diterapkan pada HAProxy? Jawabannya adalah karena mode aktif pada NGINX tidak tersedia pada versi gratisan. Mode aktif hanya tersedia pada versi pro. Jadi, jika ingin menggunakan mode aktif pada NGINX, maka harus membeli lisensi pro.
 
 ## Praktik Lapangan
 
