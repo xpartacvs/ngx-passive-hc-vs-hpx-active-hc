@@ -34,7 +34,7 @@ Kenapa menggunakan mode pasif pada NGINX sedangkan mode aktif diterapkan pada HA
 
 Pada praktik lapangan ini, kita akan melakukan simulasi healthcheck yang masing-masing dilakukan oleh NGINX dan HAProxy. Kita akan melihat perbedaan cara kerja dari keduanya.
 
-Dengan asumsi bahwa kita sudah meng-_clone_ reopsitori ini, mari kita mulai dengan menghidupkan semua service yang dibutuhkan dengan menjalankan perintah berikut:
+Dengan asumsi bahwa kita sudah meng-_clone_ repositori ini, mari kita mulai dengan menghidupkan semua service yang dibutuhkan dengan menjalankan perintah berikut:
 
 ```bash
 sudo docker-compose up -d
